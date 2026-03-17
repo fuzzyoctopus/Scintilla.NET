@@ -3512,6 +3512,25 @@ namespace ScintillaNET
         }
 
         /// <summary>
+        /// Sets accessibility support.
+        /// </summary>
+        /// <param name="accessibility">0 to disable accessibility support, 1 to enable accessibility support.</param>
+        public void SetAccessibility(int accessibility)
+        {
+            accessibility = Helpers.Clamp(accessibility, NativeMethods.SC_ACCESSIBILITY_DISABLED, NativeMethods.SC_ACCESSIBILITY_ENABLED);
+            DirectMessage(NativeMethods.SCI_SETACCESSIBILITY, new IntPtr(accessibility));
+        }
+
+        /// <summary>
+        /// Gets the accessibility support state.
+        /// </summary>
+        /// <returns>0 when disabled, 1 when enabled.</returns>
+        public int GetAccessibility()
+        {
+            return DirectMessage(NativeMethods.SCI_GETACCESSIBILITY).ToInt32();
+        }
+
+        /// <summary>
         /// Sets the representation for a specified character string.
         /// </summary>
         /// <param name="encodedString">The encoded string. I.e. the Ohm character: Ω = \u2126.</param>
@@ -3669,6 +3688,25 @@ namespace ScintillaNET
                 WrapMode wrapMode = WrapMode;
                 WrapMode = wrapMode == WrapMode.None ? WrapMode.Word : WrapMode.None;
                 WrapMode = wrapMode;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets whether accessibility support is enabled.
+        /// </summary>
+        /// <returns>true when accessibility support is enabled; otherwise, false. The default is false.</returns>
+        [DefaultValue(false)]
+        [Category("Behavior")]
+        [Description("Enable or disable accessibility support.")]
+        public bool AccessibilityEnabled
+        {
+            get
+            {
+                return GetAccessibility() == NativeMethods.SC_ACCESSIBILITY_ENABLED;
+            }
+            set
+            {
+                SetAccessibility(value ? NativeMethods.SC_ACCESSIBILITY_ENABLED : NativeMethods.SC_ACCESSIBILITY_DISABLED);
             }
         }
 

@@ -1028,6 +1028,8 @@ public static class NativeMethods
     public const int SCI_GETMOUSEWHEELCAPTURES = 2697;
     public const int SCI_TOGGLEFOLDSHOWTEXT = 2700;
     public const int SCI_FOLDDISPLAYTEXTSETSTYLE = 2701;
+    public const int SCI_SETACCESSIBILITY = 2702;
+    public const int SCI_GETACCESSIBILITY = 2703;
     public const int SCI_GETCARETLINEFRAME = 2704;
     public const int SCI_SETCARETLINEFRAME = 2705;
     public const int SCI_SETELEMENTCOLOUR = 2753;
@@ -1073,6 +1075,8 @@ public static class NativeMethods
     public const int SCI_GETSUBSTYLEBASES = 4026;
     // public const int SCI_SETUSEPALETTE = 2039;
     // public const int SCI_GETUSEPALETTE = 2139;
+    public const int SC_ACCESSIBILITY_DISABLED = 0;
+    public const int SC_ACCESSIBILITY_ENABLED = 1;
     public const int SC_BIDIRECTIONAL_DISABLED = 0;
     public const int SC_BIDIRECTIONAL_L2R = 1;
     public const int SC_BIDIRECTIONAL_R2L = 2;
